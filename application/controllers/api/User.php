@@ -30,7 +30,10 @@ class User extends RestController
         $user_lname = $this->get("user_lname");
 
         if ($status == "one") {
-            $where = "user_fname = '$user_fname' AND user_lname = '$user_lname'";
+            $where = "user_fname = '$ $userID' AND user_lname = '$user_lname'";
+            $result = $this->user_model->getUserOne($where);
+        } else if ($status == "id") {
+            $where = "userID = '$userID'";
             $result = $this->user_model->getUserOne($where);
         } else {
             $result = $this->user_model->getUserAll();
